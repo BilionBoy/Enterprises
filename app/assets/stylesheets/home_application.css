@@ -13,12 +13,6 @@ body {
   height: 100%;
 }
 
-/* Container principal */
-.page-content {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-}
 /* Estilos do Footer */
 .footer {
   margin-top: auto;
@@ -26,13 +20,10 @@ body {
 }
 .content-wrapper {
   flex: 1;
+  margin-top: 70px;
 }
-.page-content .content-wrapper {
-  margin-top: 90px; /* Adiciona o espaçamento superior */
-}
-
-.content-wrapper .navbar-static {
-  z-index: 1021;
+#inicio {
+  margin-top: 100px;
 }
 
 /* Títulos E Textos*/
@@ -41,10 +32,15 @@ a {
   font-weight: bold;
 }
 
+h1.h4.mb-0 {
+  color: #000000;
+}
+mb0 {
+  color: #222;
+}
 h1,
 h2,
 h3,
-h4,
 h5,
 h6 {
   font-family: "Nunito", sans-serif;
@@ -77,11 +73,11 @@ b {
 /* SIDEBAR */
 
 .sidebar[data-background-color="dark"] {
-  background: #005171 !important;
+  background: #181818 !important;
 }
 
 .logo-header[data-background-color="dark"] {
-  background: #005171 !important;
+  background: #181818 !important;
 }
 
 .sidebar .nav.nav-secondary>.nav-item a:hover i,
@@ -137,7 +133,7 @@ b {
 
 /* NAVBAR */
 .main-header {
-  background: #005171 !important;
+  background: #181818 !important;
   min-height: 60px;
   width: calc(100% - 250px);
   position: fixed;
@@ -176,7 +172,7 @@ b {
   color: black;
 }
 
-/* Estilo personalizado para o botão "Incluir" */
+/* BUTTONS CUSTOMIZADOS */
 .btn-incluir {
   margin-top: 20px;
   padding: 0.65rem 1.4rem;
@@ -201,16 +197,52 @@ b {
 }
 
 .btn-secondary {
-  background: 005171 !important;
-  background-color: #005171 !important;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #d9d9d9 !important;
+  background-color: #d9d9d9; /* Cor do botão secundário */
+  border-color: #000000 !important;
+  margin-top: 20px;
+  padding: 0.65rem 1.4rem;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.3s;
 }
 
 .btn-secondary:hover,
 .btn-secondary:focus,
 .btn-secondary:disabled {
-  color: #ffffff !important;
-  background: 005171 !important;
-  border-color: 005171 !important;
+  color: #000000 !important;
+  background: #d9d9d9 !important;
+  border-color: #000000 !important;
+}
+
+#searchButton {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#searchButton:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#searchButton:active {
+  background-color: #003f7f;
+  transform: scale(0.98);
 }
 
 /* DATATABLES */
@@ -280,7 +312,9 @@ b {
 .notice-text {
   color: green;
 }
-
+.page-inner {
+  padding: 2rem; /* Espaçamento interno da página */
+}
 .form-search {
   display: flex;
   align-items: center;
@@ -289,38 +323,8 @@ b {
   width: 100%;
 }
 
-.search-field {
-  max-width: 200px;
-}
-
-.search-field + .search-field {
-  max-width: 300px;
-}
-
-#searchButton {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-#searchButton:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-#searchButton:active {
-  background-color: #003f7f;
-  transform: scale(0.98);
+.card {
+  border: 1px solid #dee2e6; /* Cor da borda do card */
 }
 
 .pag-bar {
@@ -369,4 +373,8 @@ b {
   border-radius: 0.75rem;
   padding: 31px;
   margin-bottom: 45px;
+}
+
+.form-control {
+  border-color: #ced4da; /* Cor da borda do campo de entrada */
 }
