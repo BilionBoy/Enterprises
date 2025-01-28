@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @funcao %>
+
+<div>
+  <%= link_to "Edit this funcao", edit_funcao_path(@funcao) %> |
+  <%= link_to "Back to funcoes", funcoes_path %>
+
+  <%= button_to "Destroy this funcao", @funcao, method: :delete %>
+</div>
