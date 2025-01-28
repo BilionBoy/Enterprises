@@ -4,7 +4,7 @@
 <div class="card">
   <div class="card-header d-flex">
     <%%= search_form_for @q, html: { class: "d-flex gap-2" , autocomplete: "off"} do |f| %>
-      <%%= f.search_field :<%= attributes[0].name %>_cont, class: "form-control", placeholder: t("activerecord.attributes.<%= singular_table_name %>.<%= attributes[0].name %>") %>
+      <%%= f.search_field :<%= attributes[0].name %>_cont, class: "form-control", placeholder: "Pesquisar" %>
       <%%= f.button(type: 'submit', class: 'btn btn-info') { tag.i(class: 'ph-magnifying-glass') } %>
       <%%= link_to  tag.i(class: 'ph-x-circle'), <%= plural_table_name %>_path, class: "btn btn-light" if params[:q] %>
       <%% end %>
@@ -25,30 +25,30 @@
           </thead>
           <tbody>
             <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
-            <td class="text-center">
-              <div class="dropdown-toggle">
-                <a href="#" class="text-body dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="ph-gear"></i>
-                </a>
-                <div class="dropdown-menu" style="">
-                  <div class="dropdown-header">Opções</div>
-                  <%%= link_to edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: "dropdown-item" do %>
-                  <i class="ph-pen me-2"></i> Editar
-                  <%% end %>
-                  <%%= form_for <%= singular_table_name %>, method: :delete do |f| %>
-                  <a class="dropdown-item hand-pointer " data-confirm-delete="<%%= <%= singular_table_name %>_path(<%= singular_table_name %>) %>" data-csrf-token="<%%= form_authenticity_token %>">
-                    <i class="ph-trash-simple me-2"></i>Excluir
-                  </a>
-                  <%% end %>
-                </div>
-              </div>
-            </td>
             <tr>
-              <%- attributes.each do |attribute| -%>
-                <% unless attributes_to_ignore.include?(attribute.name) %>
-                  <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
-                <% end %>
-              <%- end -%>
+              <td class="text-center">
+                <div class="dropdown-toggle">
+                  <a href="#" class="text-body dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="ph-gear"></i>
+                  </a>
+                  <div class="dropdown-menu" style="">
+                    <div class="dropdown-header">Opções</div>
+                    <%%= link_to edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: "dropdown-item" do %>
+                    <i class="ph-pen me-2"></i> Editar
+                    <%% end %>
+                    <%%= form_for <%= singular_table_name %>, method: :delete do |f| %>
+                    <a class="dropdown-item hand-pointer " data-confirm-delete="<%%= <%= singular_table_name %>_path(<%= singular_table_name %>) %>" data-csrf-token="<%%= form_authenticity_token %>">
+                      <i class="ph-trash-simple me-2"></i>Excluir
+                    </a>
+                    <%% end %>
+                    <%- attributes.each do |attribute| -%>
+                      <% unless attributes_to_ignore.include?(attribute.name) %>
+                        <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+                      <% end %>
+                    <%- end -%>
+                  </div>
+                </div>
+              </td>
             </tr>
             <%% end %>
           </tbody>
