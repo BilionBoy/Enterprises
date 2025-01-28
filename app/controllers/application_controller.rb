@@ -4,12 +4,14 @@ class ApplicationController < ActionController::Base
 
   # Definir o layout de acordo com o controller
   before_action :set_layout_by_controller
+
   private
+
   def set_layout_by_controller
-   if devise_controller?
-     self.class.layout "devise_application"
-   else
-     self.class.layout "application"
-   end
+    if devise_controller?
+      self.class.layout "devise_application"  # Aplica o layout Devise para controladores do Devise
+    else
+      self.class.layout "application"  # Aplica o layout padrão para outros controladores
+    end
   end
 end
