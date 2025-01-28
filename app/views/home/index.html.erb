@@ -1,0 +1,414 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <svg class="me-2" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12Z" stroke="currentColor" stroke-width="2"/>
+        <path d="M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" fill="currentColor"/>
+      </svg>
+      MenuX
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#recursos">
+            <i class="fas fa-cube me-1"></i>
+            Recursos
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#como-funciona">
+            <i class="fas fa-magic me-1"></i>
+            Como Funciona
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#precos">
+            <i class="fas fa-tag me-1"></i>
+            Preços
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contato">
+            <i class="fas fa-envelope me-1"></i>
+            Contato
+          </a>
+        </li>
+      </ul>
+      <div class="d-flex gap-3 align-items-center">
+        <a href="/funcoes" class="nav-link <%= "active" if params[:controller] == "application" %>">
+          <i class="fas fa-user-shield me-2"></i>
+          Área Administrativa
+        </a>
+        <a href="#demo" class="demo-btn">
+          <i class="fas fa-play me-2"></i>
+          Demo
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 hero-content">
+        <h1 class="hero-title">
+          Transforme seu Restaurante com Tecnologia
+        </h1>
+        <p class="hero-description">
+          Simplifique suas operações, aumente a satisfação dos clientes e maximize seus lucros com nossa solução completa de gestão.
+        </p>
+        <div class="d-flex gap-3">
+          <a href="#demo" class="btn btn-custom btn-light btn-lg">
+            <i class="fas fa-rocket me-2"></i>
+            Começar Agora
+          </a>
+          <a href="#recursos" class="btn btn-custom btn-outline-custom btn-lg">
+            <i class="fas fa-info-circle me-2"></i>
+            Saiba Mais
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="row g-4">
+          <div class="col-6">
+            <div class="stats-card" style="animation-delay: 0.2s">
+              <div class="stats-number">+5000</div>
+              <div class="stats-label">Restaurantes</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="stats-card" style="animation-delay: 0.4s">
+              <div class="stats-number">98%</div>
+              <div class="stats-label">Satisfação</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="stats-card" style="animation-delay: 0.6s">
+              <div class="stats-number">30min</div>
+              <div class="stats-label">Implementação</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="stats-card" style="animation-delay: 0.8s">
+              <div class="stats-number">24/7</div>
+              <div class="stats-label">Suporte</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Features Section -->
+<section class="features-section" id="recursos">
+  <div class="container">
+    <h2 class="section-title">Recursos Principais</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-cash-register"></i>
+          </div>
+          <h3 class="feature-title">PDV Intuitivo</h3>
+          <p class="feature-description">
+            Sistema de vendas simples e eficiente para agilizar seu atendimento e reduzir filas.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3 class="feature-title">Gestão Completa</h3>
+          <p class="feature-description">
+            Controle de estoque, financeiro e relatórios detalhados em tempo real para decisões precisas.
+          </p>
+        </div>
+      </p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fas fa-users"></i>
+      </div>
+      <h3 class="feature-title">Fidelização</h3>
+      <p class="feature-description">
+        Programa de fidelidade e gestão de relacionamento com clientes para aumentar o retorno.
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+<!-- Como Funciona Section -->
+<section class="how-it-works" id="como-funciona">
+  <div class="container">
+    <h2 class="section-title">Como Funciona</h2>
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h4 class="step-title">Cadastre-se</h4>
+          <p class="feature-description">
+            Crie sua conta gratuitamente em menos de 5 minutos
+          </p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h4 class="step-title">Configure</h4>
+          <p class="feature-description">
+            Personalize o sistema de acordo com suas necessidades
+          </p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h4 class="step-title">Treine</h4>
+          <p class="feature-description">
+            Acesse nossos tutoriais e treine sua equipe
+          </p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h4 class="step-title">Comece a Usar</h4>
+          <p class="feature-description">
+            Inicie suas operações com suporte 24/7
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Pricing Section -->
+<section class="pricing-section" id="precos">
+  <div class="container">
+    <h2 class="section-title">Planos e Preços</h2>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4">
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3 class="pricing-title">Básico</h3>
+            <div class="pricing-price">R$ 99<span class="pricing-duration">/mês</span></div>
+          </div>
+          <ul class="pricing-features list-unstyled">
+            <li class="pricing-feature">
+              <i class="fas fa-check"></i>
+              PDV Básico
+            </li>
+            <li class="pricing-feature">
+              <i class="fas fa-check"></i>
+              Controle de Estoque
+            </li>
+            <li class="pricing-feature">
+              <i class="fas fa-check"></i>
+              Relatórios Simples
+            </li>
+            <li class="pricing-feature">
+              <i class="fas fa-check"></i>
+              1 Usuário
+            </li>
+          </ul>
+          <a href="#" class="btn btn-outline-primary w-100 btn-custom">Começar Agora</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="pricing-card popular">
+          <div class="popular-badge">POPULAR</div>
+          <div class="pricing-header">
+            <h3 class="pricing-title">Profissional</h3>
+            <div class="pricing-price">R$ 199<span class="pricing-duration">/mês</span></div>
+          </div>
+          <ul class="pricing-features list-unstyled">
+            <li class="pricing-feature">
+              <i class="fas fa-check"></i>
+              Tudo do Plano Básico
+            </li>
+            <li class="pricing-feature">
+              <i class="fas fa-check"></i>
+              Gestão Financeira
+            </li>
+            <li class="pricing-feature">
+              <i class="fas fa-check"></i>
+              Programa de Fidelidade
+            </li>
+            <li class="pricing-feature">
+              <i class="fas fa-check"></i>
+              5 Usuários
+            </li>
+          </ul>
+          <a href="#" class="btn btn-primary w-100 btn-custom">Começar Agora</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3 class="pricing-title">Enterprise</h3>
+            <div class="pricing-price">R$ 399<span class="pricing-duration">/mês</span></div>
+          </div>
+          <ul class="pricing-features list-unstyled">
+            <li class="pricing-feature">
+              <i class="fas fa-check"></i>
+              Tudo do Profissional
+            </li>
+            <li class="pricing-feature">
+              <i class="fas fa-check"></i>
+              API Personalizada
+            </li>
+            <li class="pricing-feature">
+              <i class="fas fa-check"></i>
+              Suporte Prioritário
+            </li>
+            <li class="pricing-feature">
+              <i class="fas fa-check"></i>
+              Usuários Ilimitados
+            </li>
+          </ul>
+          <a href="#" class="btn btn-outline-primary w-100 btn-custom">Falar com Consultor</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Contact Section -->
+<section class="contact-section" id="contato">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="contact-card">
+          <h2 class="section-title">Entre em Contato</h2>
+          <form class="mt-5">
+            <div class="mb-4">
+              <label for="nome" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="nome" required>
+            </div>
+            <div class="mb-4">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-4">
+              <label for="telefone" class="form-label">Telefone</label>
+              <input type="tel" class="form-control" id="telefone">
+            </div>
+            <div class="mb-4">
+              <label for="mensagem" class="form-label">Mensagem</label>
+              <textarea class="form-control" id="mensagem" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-custom w-100">
+              <i class="fas fa-paper-plane me-2"></i>
+              Enviar Mensagem
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <h5 class="footer-title">Sobre o MenuX</h5>
+        <p class="footer-text">
+          Sistema completo de gestão para restaurantes, bares, pizzarias e similares. 
+          Simplifique suas operações e aumente seus lucros.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-link">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <h5 class="footer-title">Links Rápidos</h5>
+        <ul class="footer-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#recursos">Recursos</a></li>
+          <li><a href="#precos">Preços</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h5 class="footer-title">Contato</h5>
+        <ul class="footer-links">
+          <li>
+            <i class="fas fa-phone me-2"></i>
+            (11) 4002-8922
+          </li>
+          <li>
+            <i class="fas fa-envelope me-2"></i>
+            contato@menux.com.br
+          </li>
+          <li>
+            <i class="fas fa-map-marker-alt me-2"></i>
+            São Paulo, SP
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h5 class="footer-title">Newsletter</h5>
+        <p class="footer-text">Receba novidades e atualizações do MenuX</p>
+        <form class="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="Seu email">
+          <button type="submit" class="newsletter-button">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="row">
+        <div class="col-md-6">
+          <p class="mb-0">&copy; 2024 MenuX. Todos os direitos reservados.</p>
+        </div>
+        <div class="col-md-6 text-md-end footer-bottom-links">
+          <a href="#">Termos de Uso</a>
+          <a href="#">Política de Privacidade</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar-custom');
+      if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+      } else {
+          navbar.classList.remove('scrolled');
+      }
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+              behavior: 'smooth'
+          });
+      });
+  });
+</script>
