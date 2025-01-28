@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "home/index"
 
   # Rotas Scaffold
+  resources :funcoes
 
 
   # Can be used by load balancers and uptime monitors to verify that the app is live.

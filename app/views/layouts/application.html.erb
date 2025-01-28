@@ -12,6 +12,7 @@
     <%= stylesheet_link_tag "/layout/assets/css/all.min.css",               "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "/layout/assets/css/animate.min.css",           "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application",                                  "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "home_application",                             "data-turbo-track": "reload" %>
     <% # App JS do projeto %>
     <%= javascript_include_tag "/layout/assets/js/jquery/jquery.min.js",                                     "data-turbo-track": "reload" %>
     <%= javascript_include_tag "/layout/assets/js/jquery/jquery.mask.min.js",                                "data-turbo-track": "reload" %>
@@ -36,14 +37,14 @@
   <body class="">
     <!-- Main navbar -->
     <%= render "shared/navbar" %>
-    <!-- /main navbar -->
     <!-- Page content -->
     <div class="page-content">
       <!-- Main sidebar -->
-      <%= render "shared/sidebar" %>
+      <%= render "shared/sidebar/sidebar" %>
       <!-- /main sidebar -->
       <div class="content-wrapper">
         <div class="content-inner">
+          <%= yield :context_nav %>
           <div class="content">
             <%= yield %>
           </div>

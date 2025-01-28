@@ -6,18 +6,18 @@ default: &default
 
 development:
   <<: *default
-  database: menuxproject_development
-  username: enterprisesdhio
+  database: menuxenterprise_development
+  username: dhiomenuxenterprise
   password: hauntmex3
 
 test:
   <<: *default
-  database: menuxproject_test
-  username: enterprisesdhio
+  database: menuxenterprise_test
+  username: dhiomenuxenterprise
   password: hauntmex3
 
 production:
   <<: *default
-  database: menuxproject_production
-  username: enterprisesdhio
-  password: <%= ENV["MENUXPROJECT_DATABASE_PASSWORD"] %>
+  database: menuxenterprise_production
+  username: dhiomenuxenterprise
+  password: <%= ENV["MENUXENTERPRISE_DATABASE_PASSWORD"] %>
