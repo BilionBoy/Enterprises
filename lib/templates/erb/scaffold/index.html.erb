@@ -14,41 +14,41 @@
         <table class="table table-sm table-bordered table-striped">
           <thead>
             <tr>
+              <th class="text-center">Ações</th>
               <% attributes_to_ignore = ['deleted_at', 'original_user_create', 'last_user_update', 'created_by', 'updated_by'] %>
               <%- attributes.each do |attribute| -%>
                 <% unless attributes_to_ignore.include?(attribute.name) %>
                   <th><%%= sort_link(@q, :<%= attribute.name %>, t("activerecord.attributes.<%= singular_table_name %>.<%= attribute.name %>")) %></th>
                 <% end %>
               <%- end -%>
-              <th class="text-center">Ações</th>
             </tr>
           </thead>
           <tbody>
             <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+            <td class="text-center">
+              <div class="dropdown-toggle">
+                <a href="#" class="text-body dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="ph-gear"></i>
+                </a>
+                <div class="dropdown-menu" style="">
+                  <div class="dropdown-header">Opções</div>
+                  <%%= link_to edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: "dropdown-item" do %>
+                  <i class="ph-pen me-2"></i> Editar
+                  <%% end %>
+                  <%%= form_for <%= singular_table_name %>, method: :delete do |f| %>
+                  <a class="dropdown-item hand-pointer " data-confirm-delete="<%%= <%= singular_table_name %>_path(<%= singular_table_name %>) %>" data-csrf-token="<%%= form_authenticity_token %>">
+                    <i class="ph-trash-simple me-2"></i>Excluir
+                  </a>
+                  <%% end %>
+                </div>
+              </div>
+            </td>
             <tr>
               <%- attributes.each do |attribute| -%>
                 <% unless attributes_to_ignore.include?(attribute.name) %>
                   <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
                 <% end %>
               <%- end -%>
-              <td class="text-center">
-                <div class="dropdown-toggle">
-                  <a href="#" class="text-body dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="ph-gear"></i>
-                  </a>
-                  <div class="dropdown-menu" style="">
-                    <div class="dropdown-header">Opções</div>
-                    <%%= link_to edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: "dropdown-item" do %>
-                    <i class="ph-pen me-2"></i> Editar
-                    <%% end %>
-                    <%%= form_for <%= singular_table_name %>, method: :delete do |f| %>
-                    <a class="dropdown-item hand-pointer " data-confirm-delete="<%%= <%= singular_table_name %>_path(<%= singular_table_name %>) %>" data-csrf-token="<%%= form_authenticity_token %>">
-                      <i class="ph-trash-simple me-2"></i>Excluir
-                    </a>
-                    <%% end %>
-                  </div>
-                </div>
-              </td>
             </tr>
             <%% end %>
           </tbody>
