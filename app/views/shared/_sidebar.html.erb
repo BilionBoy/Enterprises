@@ -1,81 +1,121 @@
-<div class="sidebar" data-background-color="dark">
-  <div class="sidebar-logo">
-    <!-- Logo Header -->
-    <div class="logo-header" data-background-color="dark">
-      <h1 class="display-6 ">Menux</h1>
-      <div class="nav-toggle">
-        <button class="btn btn-toggle toggle-sidebar">
-          <i class="gg-menu-right"></i>
-        </button>
-        <button class="btn btn-toggle sidenav-toggler">
-          <i class="gg-menu-left"></i>
-        </button>
+<div class="sidebar sidebar-dark sidebar-main sidebar-expand-xl" style="background: #005171;">
+  <div class="sidebar-content">
+    <div class="sidebar-section">
+      <div class="sidebar-section-body d-flex justify-content-center">
+        <h5 class="sidebar-resize-hide flex-grow-1 my-auto"><b>Menux</b></h5>
+        <div>
+          <button type="button" class="btn btn-flat-white btn-icon btn-sm rounded-pill border-transparent sidebar-mobile-main-toggle d-xl-none">
+            <i class="ph-x"></i>
+          </button>
+        </div>
       </div>
-      <button class="topbar-toggler more">
-        <i class="gg-more-vertical-alt"></i>
-      </button>
     </div>
-    <!-- End Logo Header -->
-  </div>
-  <div class="sidebar-wrapper scrollbar scrollbar-inner">
-    <div class="sidebar-content">
-      <ul class="nav nav-secondary">
-        <li class="nav-item active">
-          <a data-bs-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
-            <i class="fas fa-home"></i>
-            <p>Dashboard</p>
-            <span class="caret"></span>
-          </a>
-          <div class="collapse" id="dashboard">
-            <ul class="nav nav-collapse">
-              <li>
-                <a href="<%= home_index_path %>">
-                  <span class="sub-item">Dashboard</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-section">
-          <span class="sidebar-mini-icon">
-            <i class="fa fa-ellipsis-h"></i>
-          </span>
-          <h4 class="text-section">Componentes</h4>
-        </li>
+    <!-- Barra de pesquisa -->
+    <div class="sidebar-section-body">
+      <div class="form-control-feedback form-control-feedback-end">
+        <input type="search" id="sidebar-search-input" class="form-control" placeholder="Pesquisar" onkeyup="filterSidebar()">
+        <div class="form-control-feedback-icon">
+          <i class="ph-magnifying-glass opacity-50"></i>
+        </div>
+      </div>
+    </div>
+    <!-- Itens da sidebar -->
+    <div class="sidebar-section">
+      <ul class="nav nav-sidebar" data-nav-type="accordion" id="sidebar-items">
         <li class="nav-item">
-          <a data-bs-toggle="collapse" href="#base">
-            <i class="fas fa-layer-group"></i>
-            <p>Home</p>
-            <span class="caret"></span>
-          </a>
-          <div class="collapse" id="base">
-            <ul class="nav nav-collapse">
-              <li>
-                <a href="<%= root_path %>">
-                  <span class="sub-item">Home</span>
-                </a>
-              </li>
-            </ul>
-          </div>
         </li>
-        <li class="nav-item">
-          <a data-bs-toggle="collapse" href="#funcoes">
-            <i class="fas fa-cogs"></i>
-            <p>Funções</p>
-            <span class="caret"></span>
+        <li class="nav-item nav-item-submenu">
+          <a href="#" class="nav-link" id="config-link" data-no-close>
+            <i class="ph-book"></i>
+            <span>
+              Relatórios
+            </span>
           </a>
-          <div class="collapse" id="funcoes">
-            <ul class="nav nav-collapse">
-              <li>
-                <a href="<%= root_path %>">
-                  <span class="sub-item">Gerenciar Funções</span>
-                </a>
-              </li>
-            </ul>
-          </div>
+          <ul class="nav-group-sub collapse" id="config-collapse">
+          </ul>
+        </li>
+        <li class="nav-item nav-item-submenu">
+          <a href="#" class="nav-link" id="config-link" data-no-close>
+            <i class="ph-users"></i>
+            <span>
+              Recursos Humanos
+            </span>
+          </a>
+          <ul class="nav-group-sub collapse" id="config-collapse">
+          </ul>
+        </li>
+        <li class="nav-item nav-item-submenu">
+          <a href="#" class="nav-link" id="config-link" data-no-close>
+            <i class="ph-buildings"></i>
+            <span>
+              Infraestrutura
+            </span>
+          </a>
+          <ul class="nav-group-sub collapse" id="config-collapse">
+          </ul>
+        </li>
+        <li class="nav-item nav-item-submenu">
+          <a href="#" class="nav-link" id="config-link" data-no-close>
+            <i class="ph-chalkboard"></i>
+            <span>
+              Escolar
+            </span>
+          </a>
+          <ul class="nav-group-sub collapse" id="config-collapse">
+          </ul>
+        </li>
+        <li class="nav-item nav-item-submenu">
+          <a href="#" class="nav-link" id="config-link" data-no-close>
+            <i class="ph-car"></i>
+            <span>
+              Frotas
+            </span>
+          </a>
+          <ul class="nav-group-sub collapse" id="config-collapse">
+          </ul>
+        </li>
+        <li class="nav-item nav-item-submenu">
+          <a href="#" class="nav-link" id="config-link" data-no-close>
+            <i class="ph-suitcase"></i>
+            <span>
+              Agendamentos
+            </span>
+          </a>
+          <ul class="nav-group-sub collapse" id="config-collapse">
+          </ul>
+        </li>
+        <li class="nav-item nav-item-submenu">
+          <a href="#" class="nav-link" id="config-link" data-no-close>
+            <i class="ph-student""></i>
+            <span>
+              Matrículas online
+            </span>
+          </a>
+          <ul class="nav-group-sub collapse" id="config-collapse">
+          </ul>
         </li>
       </ul>
     </div>
   </div>
 </div>
-<!-- End Sidebar -->
+<script>
+  function filterSidebar() {
+    const input = document.getElementById('sidebar-search-input');
+    const filter = input.value.toLowerCase();
+    const navItems = document.querySelectorAll('#sidebar-items .nav-item, #sidebar-items .nav-item-header');
+
+    navItems.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      const isCollapsible = item.querySelector('.nav-group-sub');
+
+      if (text.includes(filter)) {
+        item.style.display = ''; // Mostra o item
+        if (isCollapsible) {
+          isCollapsible.classList.add('show'); // Abre a seção colapsável
+        }
+      } else {
+        item.style.display = 'none'; // Oculta o item
+      }
+    });
+  }
+</script>

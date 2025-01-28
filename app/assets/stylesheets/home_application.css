@@ -66,10 +66,6 @@ b {
   font-weight: 600;
 }
 
-.nav-link {
-  color: #161616 !important;
-}
-
 /* SIDEBAR */
 
 .sidebar[data-background-color="dark"] {
