@@ -4,7 +4,7 @@
 <div class="card">
   <div class="card-header d-flex">
     <%= search_form_for @q, html: { class: "d-flex gap-2" , autocomplete: "off"} do |f| %>
-      <%= f.search_field :nome_cont, class: "form-control", placeholder: t("activerecord.attributes.funcao.nome") %>
+      <%= f.search_field :nome_cont, class: "form-control", placeholder: "Pesquisar" %>
       <%= f.button(type: 'submit', class: 'btn btn-info') { tag.i(class: 'ph-magnifying-glass') } %>
       <%= link_to  tag.i(class: 'ph-x-circle'), funcoes_path, class: "btn btn-light" if params[:q] %>
     <% end %>
@@ -14,9 +14,9 @@
       <table class="table table-sm table-bordered table-striped">
         <thead>
           <tr>
-            <th class="text-center">Ações</th>
             <th><%= sort_link(@q, :nome, t("activerecord.attributes.funcao.nome")) %></th>
             <th><%= sort_link(@q, :descricao, t("activerecord.attributes.funcao.descricao")) %></th>
+            <th class="text-center">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -40,17 +40,15 @@
                   </div>
                 </div>
               </td>
-              <td><%= funcao.nome %></td>
-              <td><%= funcao.descricao %></td>
             </tr>
+            <td><%= funcao.nome %></td>
+            <td><%= funcao.descricao %></td>
           <% end %>
         </tbody>
       </table>
     </div>
   </div>
   <div class="card-footer">
-    <div id="pagyNav" class="pag-bar">
-      <%= pagy_bootstrap_nav(@pagy, link_extra: 'class="btn btn-outline-secondary btn-sm mx-1"').html_safe %>
-    </div>
+    <%= pagy_bootstrap_nav(@pagy, link_extra: 'class="btn btn-outline-secondary btn-sm mx-1"').html_safe %>
   </div>
 </div>

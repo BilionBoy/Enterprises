@@ -1,37 +1,29 @@
-<!-- Cabeçalho do formulário -->
-<div class="page-body page-header mb-4 shadow">
-  <div class="d-flex justify-content-between align-items-center">
-    <div class="d-flex align-items-center">
-      <%= link_to funcoes_path, class: "btn btn-outline-secondary btn-sm me-3" do %>
-      <i class="fas fa-arrow-left"></i>
-      <% end %>
-      <h1 class="h4 mb-0"> <%=t("common.back", default: "Cadastro") %></h1>
+<%= render "shared/context_nav", title: t("activerecord.models.#{Funcao.model_name.i18n_key}.other") do  %>
+  <span class="breadcrumb-item"><%= link_to t("activerecord.models.#{Funcao.model_name.i18n_key}.other"), funcoes_path, class: "text-dark" %></span>
+  <span class="breadcrumb-item active"><%= t("helpers.submit.#{params[:action]}") %></span>
+<% end %>
+<%= simple_form_for(@funcao) do |f| %>
+  <div class="card">
+    <div class="card-header">
+      <h5 class="my-0">
+        <%= @funcao.new_record? ? "Incluir " : "Editar " %><%= t("activerecord.models.#{Funcao.model_name.i18n_key}.one") %>
+      </h5>
+    </div>
+    <div class="card-body">
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+      <div class="row">
+        <div class="col-12">
+          <%= f.input :nome, input_html: { class: "keyup "}  %>
+        </div>
+        <div class="col-12">
+          <%= f.input :descricao, input_html: { class: "keyup "}  %>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <%= f.submit t(".save", default: "Salvar"), class: "btn btn-incluir" %>
+      <%= link_to "Voltar", funcoes_path, class: "btn btn-light" %>
     </div>
   </div>
-</div>
-<%= simple_form_for(@funcao, html: { class: "container-fluid page-inner" }) do |f| %>
-<div class="card">
-  <div class="card-body">
-    <!-- Campos do formulário -->
-    <div class="form-inputs">
-        <div class="row mb-3">
-          <div class="col-12 col-md-6">
-            <!-- Exibe o campo de entrada ou associação (FK) de forma responsiva -->
-            <%= f.input :nome, input_html: { class: "form-control", style: "max-width: 100%;", placeholder: "Nome", title: "Informe nome" } %>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-12 col-md-6">
-            <!-- Exibe o campo de entrada ou associação (FK) de forma responsiva -->
-            <%= f.input :descricao, input_html: { class: "form-control", style: "max-width: 100%;", placeholder: "Descricao", title: "Informe descricao" } %>
-          </div>
-        </div>
-    </div>
-  </div>
-  <div class="card-footer d-flex justify-content-between">
-    <!-- Botões do formulário -->
-    <%= f.submit t(".save", default: "Salvar"), class: "btn btn-primary" %>
-    <%= link_to t("common.back", default: "Voltar"), funcoes_path, class: "btn btn-secondary" %>
-  </div>
-</div>
 <% end %>
