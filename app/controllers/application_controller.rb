@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   # Definir o layout de acordo com o controller
   before_action :set_layout_by_controller
 
+
   private
 
   def set_layout_by_controller

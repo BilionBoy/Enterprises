@@ -1,12 +1,501 @@
+<style>
+  :root {
+    --primary:
+  rgb(179, 25, 25);
+    --primary-dark:rgb(247, 86, 65);
+    --secondary:rgba(14, 164, 233, 0.86);
+    --accent: #f0f9ff;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --success: #22c55e;
+    --warning: #eab308;
+    --danger: #ef4444;
+    --info: #3b82f6;
+    --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.08);
+    --shadow-md: 0 4px 6px rgba(15, 23, 42, 0.1);
+    --shadow-lg: 0 10px 15px rgba(15, 23, 42, 0.1);
+    --shadow-xl: 0 20px 25px rgba(15, 23, 42, 0.1);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--dark);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+  }
+
+  /* Navbar */
+  .navbar {
+    padding: 1rem 0;
+    transition: var(--transition);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+  }
+
+  .navbar.scrolled {
+    padding: 0.75rem 0;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: var(--shadow-md);
+  }
+
+  .nav-link {
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    color: var(--dark);
+    transition: var(--transition);
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: var(--transition);
+    transform: translateX(-50%);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 160px 0 120px;
+    background: var(--gradient);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    min-height: calc(100vh - 80px);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: cover;
+    background-position: center bottom;
+    opacity: 0.1;
+    animation: wave 15s ease-in-out infinite alternate;
+  }
+
+  @keyframes wave {
+    from { transform: translateY(0px); }
+    to { transform: translateY(10px); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+    max-width: 600px;
+  }
+
+  .hero-cta {
+    margin-bottom: 3rem;
+  }
+
+  .hero-features {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .feature-icon {
+    font-size: 1.5rem;
+    color: #22d3ee;
+  }
+
+  .hero-image {
+    position: relative;
+  }
+
+  .image-wrapper {
+    position: relative;
+    z-index: 1;
+  }
+
+  .main-image {
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-image {
+    position: absolute;
+    bottom: -50px;
+    right: -30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .floating-card {
+    position: absolute;
+    background: white;
+    color: #333;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .card-1 {
+    top: 20px;
+    left: -20px;
+  }
+
+  .card-2 {
+    bottom: 50px;
+    left: -40px;
+  }
+
+  .rating-badge {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+  }
+
+  .rating-badge i {
+    color: #fbbf24;
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    transition: var(--transition);
+  }
+
+  .btn-primary {
+    background: #fff;
+    color: var(--primary);
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    color: var(--primary);
+  }
+
+  .btn-outline-light {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: white;
+  }
+
+  .btn-outline-light:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    color: white;
+  }
+
+  /* Features Section */
+  .features-section {
+    padding: 8rem 0;
+    background: var(--light);
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: #64748b;
+    margin-bottom: 4rem;
+  }
+
+  .feature-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    height: 100%;
+    transition: var(--transition);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+  }
+
+  .feature-icon {
+    width: 64px;
+    height: 64px;
+    background: var(--gradient);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: white;
+  }
+
+  .feature-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 1rem;
+  }
+
+  .feature-description {
+    color: #64748b;
+    line-height: 1.6;
+  }
+
+  /* Pricing Cards */
+  .pricing-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    height: 100%;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary);
+  }
+
+  .pricing-header {
+    background: var(--gradient);
+    padding: 2.5rem;
+    color: white;
+    text-align: center;
+  }
+
+  .pricing-amount {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 1rem 0;
+  }
+
+  .pricing-period {
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+
+  .pricing-features {
+    padding: 2.5rem;
+  }
+
+  .pricing-feature {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    color: var(--dark);
+  }
+
+  .pricing-feature i {
+    color: var(--success);
+    margin-right: 0.75rem;
+  }
+
+  /* Testimonial Cards */
+  .testimonial-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    height: 100%;
+    transition: var(--transition);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .testimonial-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    border: 3px solid var(--primary);
+    padding: 3px;
+  }
+
+  .testimonial-stars {
+    color: var(--warning);
+    margin: 1rem 0;
+  }
+
+  /* Contact Form */
+  .contact-form {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .form-control {
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    transition: var(--transition);
+  }
+
+  .form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+
+  /* Footer */
+  .footer {
+    background: var(--dark);
+    color: white;
+    padding: 5rem 0 2rem;
+  }
+
+  .footer-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: white;
+  }
+
+  .footer-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: var(--transition);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-link:hover {
+    color: white;
+    transform: translateX(5px);
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: var(--transition);
+  }
+
+  .social-link:hover {
+    background: var(--primary);
+    transform: translateY(-5px);
+  }
+
+  .text-primary{
+  color: var(--dark) !important;
+  }
+  /* Responsive Adjustments */
+  @media (max-width: 991.98px) {
+    .hero-content {
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+    }
+
+    .hero-features {
+      justify-content: center;
+    }
+
+    .hero-image {
+      margin-top: 3rem;
+    }
+
+    .mobile-image {
+      right: 10%;
+    }
+
+    .pricing-card {
+      margin-bottom: 2rem;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .hero {
+      padding: 120px 0 80px;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-features {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .feature-card,
+    .testimonial-card {
+      margin-bottom: 2rem;
+    }
+
+    .mobile-image {
+      width: 150px;
+      right: 5%;
+    }
+  }
+</style>
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="#">
-      <svg class="me-2" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12Z" stroke="currentColor" stroke-width="2"/>
-        <path d="M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" fill="currentColor"/>
-      </svg>
-      MenuX
+    <a class="navbar-brand" href="#">
+      <img src="/layout/assets/img/fast-food.png" style="height: 65px">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
@@ -14,401 +503,369 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mx-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#recursos">
-            <i class="fas fa-cube me-1"></i>
-            Recursos
-          </a>
+          <a class="nav-link" href="#features">Recursos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#como-funciona">
-            <i class="fas fa-magic me-1"></i>
-            Como Funciona
-          </a>
+          <a class="nav-link" href="#how-it-works">Como Funciona</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#precos">
-            <i class="fas fa-tag me-1"></i>
-            Preços
-          </a>
+          <a class="nav-link" href="#pricing">Preços</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#contato">
-            <i class="fas fa-envelope me-1"></i>
-            Contato
-          </a>
+          <a class="nav-link" href="#testimonials">Depoimentos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contato</a>
         </li>
       </ul>
-      <div class="d-flex gap-3 align-items-center">
-        <a href="/funcoes" class="nav-link <%= "active" if params[:controller] == "application" %>">
-          <i class="fas fa-user-shield me-2"></i>
-          Área Administrativa
-        </a>
-        <a href="#demo" class="demo-btn">
-          <i class="fas fa-play me-2"></i>
-          Demo
-        </a>
-      </div>
+      <a href="#" class="btn btn-primary">Experimente Grátis</a>
     </div>
   </div>
 </nav>
 <!-- Hero Section -->
-<section class="hero-section">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6 hero-content">
-        <h1 class="hero-title">
-          Transforme seu Restaurante com Tecnologia
-        </h1>
-        <p class="hero-description">
-          Simplifique suas operações, aumente a satisfação dos clientes e maximize seus lucros com nossa solução completa de gestão.
-        </p>
-        <div class="d-flex gap-3">
-          <a href="#demo" class="btn btn-custom btn-light btn-lg">
-            <i class="fas fa-rocket me-2"></i>
-            Começar Agora
+<section class="hero">
+  <div class="container  position-relative">
+    <div class="row align-items-center min-vh-50">
+      <div class="col-lg-6 hero-content" data-aos="fade-up">
+        <h1 class="hero-title">Transforme seu Cardápio em uma Experiência Digital</h1>
+        <p class="hero-subtitle">Cardápios interativos, QR codes inteligentes e análises em tempo real para revolucionar seu negócio.</p>
+        <div class="hero-cta">
+          <a href="#" class="btn btn-primary btn-lg">
+            <i class="fas fa-rocket me-2"></i>Começar Agora
           </a>
-          <a href="#recursos" class="btn btn-custom btn-outline-custom btn-lg">
-            <i class="fas fa-info-circle me-2"></i>
-            Saiba Mais
+          <a href="#features" class="btn btn-outline-light btn-lg ms-3">
+            <i class="fas fa-info-circle me-2"></i>Saiba Mais
           </a>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="row g-4">
-          <div class="col-6">
-            <div class="stats-card" style="animation-delay: 0.2s">
-              <div class="stats-number">+5000</div>
-              <div class="stats-label">Restaurantes</div>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="stats-card" style="animation-delay: 0.4s">
-              <div class="stats-number">98%</div>
-              <div class="stats-label">Satisfação</div>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="stats-card" style="animation-delay: 0.6s">
-              <div class="stats-number">30min</div>
-              <div class="stats-label">Implementação</div>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="stats-card" style="animation-delay: 0.8s">
-              <div class="stats-number">24/7</div>
-              <div class="stats-label">Suporte</div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+</div>
 </section>
 <!-- Features Section -->
-<section class="features-section" id="recursos">
+<section id="features" class="features-section">
   <div class="container">
-    <h2 class="section-title">Recursos Principais</h2>
+    <div class="text-center mb-5">
+      <h2 class="section-title">Recursos Poderosos</h2>
+      <p class="section-subtitle">Tudo que você precisa para gerenciar seu cardápio digital</p>
+    </div>
     <div class="row g-4">
-      <div class="col-md-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
         <div class="feature-card">
           <div class="feature-icon">
-            <i class="fas fa-cash-register"></i>
+            <i class="fas fa-mobile-alt"></i>
           </div>
-          <h3 class="feature-title">PDV Intuitivo</h3>
-          <p class="feature-description">
-            Sistema de vendas simples e eficiente para agilizar seu atendimento e reduzir filas.
-          </p>
+          <h3 class="feature-title">Cardápio Digital Interativo</h3>
+          <p class="feature-description">Ofereça uma experiência moderna e intuitiva aos seus clientes com nosso cardápio digital responsivo.</p>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-qrcode"></i>
+          </div>
+          <h3 class="feature-title">QR Codes Dinâmicos</h3>
+          <p class="feature-description">Gere QR codes únicos para cada mesa, permitindo acesso rápido e fácil ao cardápio digital.</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
         <div class="feature-card">
           <div class="feature-icon">
             <i class="fas fa-chart-line"></i>
           </div>
-          <h3 class="feature-title">Gestão Completa</h3>
-          <p class="feature-description">
-            Controle de estoque, financeiro e relatórios detalhados em tempo real para decisões precisas.
-          </p>
+          <h3 class="feature-title">Análises Avançadas</h3>
+          <p class="feature-description">Obtenha insights valiosos sobre as preferências dos clientes e o desempenho do seu menu.</p>
         </div>
-      </p>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="feature-card">
-      <div class="feature-icon">
-        <i class="fas fa-users"></i>
       </div>
-      <h3 class="feature-title">Fidelização</h3>
-      <p class="feature-description">
-        Programa de fidelidade e gestão de relacionamento com clientes para aumentar o retorno.
-      </p>
     </div>
   </div>
-</div>
-</div>
 </section>
-<!-- Como Funciona Section -->
-<section class="how-it-works" id="como-funciona">
-  <div class="container">
-    <h2 class="section-title">Como Funciona</h2>
+<!-- How It Works Section -->
+<section id="how-it-works" class="py-5 bg-light">
+  <div class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="display-4 fw-bold mb-3">Como Funciona</h2>
+      <p class="text-muted">Comece a usar o MenuX em 4 passos simples</p>
+    </div>
     <div class="row g-4">
-      <div class="col-md-3">
-        <div class="step-card">
-          <div class="step-number">1</div>
-          <h4 class="step-title">Cadastre-se</h4>
-          <p class="feature-description">
-            Crie sua conta gratuitamente em menos de 5 minutos
-          </p>
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-card text-center">
+          <div class="display-4 fw-bold text-primary mb-3">1</div>
+          <h4>Cadastre-se</h4>
+          <p class="text-muted mb-0">Crie sua conta gratuitamente em menos de 5 minutos.</p>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="step-card">
-          <div class="step-number">2</div>
-          <h4 class="step-title">Configure</h4>
-          <p class="feature-description">
-            Personalize o sistema de acordo com suas necessidades
-          </p>
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="feature-card text-center">
+          <div class="display-4 fw-bold text-primary mb-3">2</div>
+          <h4>Crie seu Menu</h4>
+          <p class="text-muted mb-0">Adicione seus pratos, fotos e preços no sistema.</p>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="step-card">
-          <div class="step-number">3</div>
-          <h4 class="step-title">Treine</h4>
-          <p class="feature-description">
-            Acesse nossos tutoriais e treine sua equipe
-          </p>
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+        <div class="feature-card text-center">
+          <div class="display-4 fw-bold text-primary mb-3">3</div>
+          <h4>Gere QR Codes</h4>
+          <p class="text-muted mb-0">Crie QR codes para cada mesa do seu estabelecimento.</p>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="step-card">
-          <div class="step-number">4</div>
-          <h4 class="step-title">Comece a Usar</h4>
-          <p class="feature-description">
-            Inicie suas operações com suporte 24/7
-          </p>
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+        <div class="feature-card text-center">
+          <div class="display-4 fw-bold text-primary mb-3">4</div>
+          <h4>Pronto!</h4>
+          <p class="text-muted mb-0">Seus clientes já podem acessar o cardápio digital.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 <!-- Pricing Section -->
-<section class="pricing-section" id="precos">
-  <div class="container">
-    <h2 class="section-title">Planos e Preços</h2>
-    <div class="row g-4 justify-content-center">
-      <div class="col-md-4">
+<section id="pricing" class="py-5">
+  <div class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="display-4 fw-bold mb-3">Planos e Preços</h2>
+      <p class="text-muted">Escolha o plano ideal para o seu negócio</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
         <div class="pricing-card">
           <div class="pricing-header">
-            <h3 class="pricing-title">Básico</h3>
-            <div class="pricing-price">R$ 99<span class="pricing-duration">/mês</span></div>
+            <h3>Básico</h3>
+            <div class="pricing-amount">R$99</div>
+            <div class="pricing-period">/mês</div>
           </div>
-          <ul class="pricing-features list-unstyled">
-            <li class="pricing-feature">
+          <div class="pricing-features">
+            <div class="pricing-feature">
               <i class="fas fa-check"></i>
-              PDV Básico
-            </li>
-            <li class="pricing-feature">
+              <span>Cardápio Digital Básico</span>
+            </div>
+            <div class="pricing-feature">
               <i class="fas fa-check"></i>
-              Controle de Estoque
-            </li>
-            <li class="pricing-feature">
+              <span>Até 50 itens no menu</span>
+            </div>
+            <div class="pricing-feature">
               <i class="fas fa-check"></i>
-              Relatórios Simples
-            </li>
-            <li class="pricing-feature">
-              <i class="fas fa-check"></i>
-              1 Usuário
-            </li>
-          </ul>
-          <a href="#" class="btn btn-outline-primary w-100 btn-custom">Começar Agora</a>
+              <span>Suporte por email</span>
+            </div>
+            <div class="mt-4">
+              <a href="#" class="btn btn-primary w-100">Começar Agora</a>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="pricing-card popular">
-          <div class="popular-badge">POPULAR</div>
-          <div class="pricing-header">
-            <h3 class="pricing-title">Profissional</h3>
-            <div class="pricing-price">R$ 199<span class="pricing-duration">/mês</span></div>
-          </div>
-          <ul class="pricing-features list-unstyled">
-            <li class="pricing-feature">
-              <i class="fas fa-check"></i>
-              Tudo do Plano Básico
-            </li>
-            <li class="pricing-feature">
-              <i class="fas fa-check"></i>
-              Gestão Financeira
-            </li>
-            <li class="pricing-feature">
-              <i class="fas fa-check"></i>
-              Programa de Fidelidade
-            </li>
-            <li class="pricing-feature">
-              <i class="fas fa-check"></i>
-              5 Usuários
-            </li>
-          </ul>
-          <a href="#" class="btn btn-primary w-100 btn-custom">Começar Agora</a>
-        </div>
-      </div>
-      <div class="col-md-4">
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
         <div class="pricing-card">
           <div class="pricing-header">
-            <h3 class="pricing-title">Enterprise</h3>
-            <div class="pricing-price">R$ 399<span class="pricing-duration">/mês</span></div>
+            <div class="badge bg-white text-primary mb-3">MAIS POPULAR</div>
+            <h3>Profissional</h3>
+            <div class="pricing-amount">R$199</div>
+            <div class="pricing-period">/mês</div>
           </div>
-          <ul class="pricing-features list-unstyled">
-            <li class="pricing-feature">
+          <div class="pricing-features">
+            <div class="pricing-feature">
               <i class="fas fa-check"></i>
-              Tudo do Profissional
-            </li>
-            <li class="pricing-feature">
+              <span>Até 200 itens no menu</span>
+            </div>
+            <div class="pricing-feature">
               <i class="fas fa-check"></i>
-              API Personalizada
-            </li>
-            <li class="pricing-feature">
+              <span>Suporte prioritário</span>
+            </div>
+            <div class="pricing-feature">
               <i class="fas fa-check"></i>
-              Suporte Prioritário
-            </li>
-            <li class="pricing-feature">
+              <span>Análise de dados básica</span>
+            </div>
+            <div class="mt-4">
+              <a href="#" class="btn btn-primary w-100">Escolher Plano</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Enterprise</h3>
+            <div class="pricing-amount">R$399</div>
+            <div class="pricing-period">/mês</div>
+          </div>
+          <div class="pricing-features">
+            <div class="pricing-feature">
               <i class="fas fa-check"></i>
-              Usuários Ilimitados
-            </li>
-          </ul>
-          <a href="#" class="btn btn-outline-primary w-100 btn-custom">Falar com Consultor</a>
+              <span>Cardápio Digital Personalizado</span>
+            </div>
+            <div class="pricing-feature">
+              <i class="fas fa-check"></i>
+              <span>Itens ilimitados no menu</span>
+            </div>
+            <div class="pricing-feature">
+              <i class="fas fa-check"></i>
+              <span>QR Codes ilimitados</span>
+            </div>
+            <div class="pricing-feature">
+              <i class="fas fa-check"></i>
+              <span>Análise de dados avançada</span>
+            </div>
+            <div class="pricing-feature">
+              <i class="fas fa-check"></i>
+              <span>Integração com sistemas existentes</span>
+            </div>
+            <div class="mt-4">
+              <a href="#" class="btn btn-primary w-100">Falar com Consultor</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- Contact Section -->
-<section class="contact-section" id="contato">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <div class="contact-card">
-          <h2 class="section-title">Entre em Contato</h2>
-          <form class="mt-5">
-            <div class="mb-4">
-              <label for="nome" class="form-label">Nome</label>
-              <input type="text" class="form-control" id="nome" required>
+<!-- Testimonials Section -->
+<section id="testimonials" class="py-5 bg-light">
+  <div class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="display-4 fw-bold mb-3">O que Nossos Clientes Dizem</h2>
+      <p class="text-muted">Histórias de sucesso de quem já usa o MenuX</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="testimonial-card text-center">
+          <img src="/placeholder.svg?height=80&width=80" alt="Maria Silva" class="testimonial-avatar mx-auto">
+          <h4>Maria Silva</h4>
+          <p class="text-muted">Proprietária do Café Aroma</p>
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="mb-0">"O MenuX revolucionou a forma como gerenciamos nosso cardápio. Nossos clientes adoram a facilidade de uso!"</p>
+        </div>
+      </div>
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="testimonial-card text-center">
+          <img src="/placeholder.svg?height=80&width=80" alt="João Santos" class="testimonial-avatar mx-auto">
+          <h4>João Santos</h4>
+          <p class="text-muted">Gerente do Restaurante Sabor</p>
+          <div class="testimonGerente do Restaurante Sabor</p>
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
             </div>
-            <div class="mb-4">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" required>
+            <p class="mb-0">"A implementação do MenuX foi rápida e fácil. Vimos um aumento significativo na satisfação dos clientes."</p>
+          </div>
+        </div>
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="testimonial-card text-center">
+            <img src="/placeholder.svg?height=80&width=80" alt="Ana Oliveira" class="testimonial-avatar mx-auto">
+            <h4>Ana Oliveira</h4>
+            <p class="text-muted">Proprietária da Pizzaria Bella</p>
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
             </div>
-            <div class="mb-4">
-              <label for="telefone" class="form-label">Telefone</label>
-              <input type="tel" class="form-control" id="telefone">
+            <p class="mb-0">"O suporte ao cliente do MenuX é excepcional. Eles estão sempre prontos para ajudar com qualquer dúvida."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Contact Section -->
+  <section id="contact" class="py-5">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="text-center mb-5">
+            <h2 class="display-4 fw-bold mb-3">Entre em Contato</h2>
+            <p class="text-muted">Estamos aqui para ajudar você a revolucionar seu negócio</p>
+          </div>
+          <div class="contact-form" data-aos="fade-up">
+            <form>
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-label">Nome</label>
+                    <input type="text" class="form-control" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" required>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="form-label">Mensagem</label>
+                    <textarea class="form-control" rows="5" required></textarea>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary w-100">Enviar Mensagem</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <h5 class="footer-title">Sobre o MenuX</h5>
+          <p class="mb-4">Transforme seu cardápio em uma experiência digital interativa. Simplifique o atendimento e encante seus clientes.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2">
+          <h5 class="footer-title">Links Rápidos</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="footer-link">Home</a></li>
+            <li><a href="#features" class="footer-link">Recursos</a></li>
+            <li><a href="#pricing" class="footer-link">Preços</a></li>
+            <li><a href="#contact" class="footer-link">Contato</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3">
+          <h5 class="footer-title">Contato</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Rua Example, 123 - São Paulo, SP</li>
+            <li class="mb-2"><i class="fas fa-phone me-2"></i>(11) 1234-5678</li>
+            <li class="mb-2"><i class="fas fa-envelope me-2"></i>contato@menux.com</li>
+          </ul>
+        </div>
+        <div class="col-lg-3">
+          <h5 class="footer-title">Newsletter</h5>
+          <p class="mb-3">Receba novidades e atualizações do MenuX</p>
+          <form class="mb-3">
+            <div class="input-group">
+              <input type="email" class="form-control" placeholder="Seu email" required>
+              <button class="btn btn-primary" type="submit">Inscrever</button>
             </div>
-            <div class="mb-4">
-              <label for="mensagem" class="form-label">Mensagem</label>
-              <textarea class="form-control" id="mensagem" rows="4" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-custom w-100">
-              <i class="fas fa-paper-plane me-2"></i>
-              Enviar Mensagem
-            </button>
           </form>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="row g-4">
-      <div class="col-lg-4">
-        <h5 class="footer-title">Sobre o MenuX</h5>
-        <p class="footer-text">
-          Sistema completo de gestão para restaurantes, bares, pizzarias e similares. 
-          Simplifique suas operações e aumente seus lucros.
-        </p>
-        <div class="social-links">
-          <a href="#" class="social-link">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="#" class="social-link">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="#" class="social-link">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a href="#" class="social-link">
-            <i class="fab fa-youtube"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-lg-2">
-        <h5 class="footer-title">Links Rápidos</h5>
-        <ul class="footer-links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#recursos">Recursos</a></li>
-          <li><a href="#precos">Preços</a></li>
-          <li><a href="#contato">Contato</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-3">
-        <h5 class="footer-title">Contato</h5>
-        <ul class="footer-links">
-          <li>
-            <i class="fas fa-phone me-2"></i>
-            (11) 4002-8922
-          </li>
-          <li>
-            <i class="fas fa-envelope me-2"></i>
-            contato@menux.com.br
-          </li>
-          <li>
-            <i class="fas fa-map-marker-alt me-2"></i>
-            São Paulo, SP
-          </li>
-        </ul>
-      </div>
-      <div class="col-lg-3">
-        <h5 class="footer-title">Newsletter</h5>
-        <p class="footer-text">Receba novidades e atualizações do MenuX</p>
-        <form class="newsletter-form">
-          <input type="email" class="newsletter-input" placeholder="Seu email">
-          <button type="submit" class="newsletter-button">
-            <i class="fas fa-paper-plane"></i>
-          </button>
-        </form>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="row">
-        <div class="col-md-6">
+      <hr class="my-4 border-light">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
           <p class="mb-0">&copy; 2024 MenuX. Todos os direitos reservados.</p>
         </div>
-        <div class="col-md-6 text-md-end footer-bottom-links">
-          <a href="#">Termos de Uso</a>
-          <a href="#">Política de Privacidade</a>
+        <div class="col-md-6 text-center text-md-end">
+          <a href="#" class="footer-link me-3">Termos de Uso</a>
+          <a href="#" class="footer-link">Política de Privacidade</a>
         </div>
       </div>
     </div>
-  </div>
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  // Navbar scroll effect
-  window.addEventListener('scroll', function() {
-      const navbar = document.querySelector('.navbar-custom');
-      if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
-      } else {
-          navbar.classList.remove('scrolled');
-      }
-  });
-
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-              behavior: 'smooth'
-          });
-      });
-  });
-</script>
+  </footer>
