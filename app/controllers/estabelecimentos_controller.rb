@@ -22,7 +22,7 @@ class EstabelecimentosController < ApplicationController
 
     if @estabelecimento.save
       # Associa o usuário atual ao estabelecimento criado
-      UsersEstabelecimento.create(user: current_user, estabelecimento: @estabelecimento)
+      UserEstabelecimento.create(user: current_user, estabelecimento: @estabelecimento)
 
       redirect_to estabelecimentos_path, notice: t("messages.created_successfully")
     else
@@ -40,11 +40,15 @@ class EstabelecimentosController < ApplicationController
   end
 
   def destroy
-    if @estabelecimento.destroy
-      redirect_to estabelecimentos_url, notice: t("messages.deleted_successfully")
-    else
-      redirect_to estabelecimentos_url, alert: t("messages.delete_failed_due_to_dependencies")
-    end
+   # Remove registros relacionados na tabela users_estabelecimentos
+   if UserEstabelecimento.where(estabelecimento_id: @estabelecimento.id).destroy_all
+     # Excluindo o estabelecimento
+     if @estabelecimento.destroy
+       redirect_to estabelecimentos_url, notice: t("messages.deleted_successfully")
+     else
+       redirect_to estabelecimentos_url, alert: t("messages.delete_failed_due_to_dependencies")
+     end
+   end
   end
 
   private

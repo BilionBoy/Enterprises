@@ -20,7 +20,7 @@
           <%= f.input :descricao, input_html: { class: "capitalize"}, placeholder: "Descricao"  %>
         </div>
         <div class="col-12">
-          <%= f.input :estabelecimento_id, as: :select, collection: Estabelecimento.pluck(:nome, :id), include_blank: "Selecione um estabelecimento", input_html: { class: "form-control capitalize" } %>
+          <%= f.association :estabelecimento, collection: current_user.estabelecimentos, label_method: :nome, value_method: :id, prompt: "Selecione um estabelecimento", input_html: { class: "form-control", style: "max-width: 100%;", title: "Informe estabelecimento" } %>
         </div>
       </div>
     </div>

@@ -23,6 +23,9 @@ pt-BR:
       categoria:
         one: "Categoria"
         other: "Categorias"
+      produto:
+        one: "Produto"
+        other: "Produtos"
     attributes:
       funcao:
         nome: "Nome"
@@ -38,6 +41,12 @@ pt-BR:
       categoria:
         nome: "Nome"
         descricao: "Descrição"
+      produto:
+        nome: "Nome"
+        descricao: "Descrição"
+        preco: "Preço"
+        categoria: "Categoria"
+        quantidade_estoque: "Quantidade em Estoque"
     errors:
       messages:
         record_invalid: "A validação falhou: %{errors}"
