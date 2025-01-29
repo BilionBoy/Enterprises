@@ -15,7 +15,7 @@
         <thead>
           <tr>
             <th class="text-center">Ações</th>
-            <th><%= sort_link(@q, :user, t("activerecord.attributes.user_estabelecimento.user")) %></th>
+            <th><%= sort_link(@q, :user, t("activerecord.attributes.user_estabelecimento.user.nome")) %></th>
             <th><%= sort_link(@q, :estabelecimento, t("activerecord.attributes.user_estabelecimento.estabelecimento")) %></th>
           </tr>
         </thead>
@@ -37,8 +37,8 @@
                         <i class="ph-trash-simple me-2"></i>Excluir
                       </a>
                     <% end %>
-                    <td><%= user_estabelecimento.user %></td>
-                    <td><%= user_estabelecimento.estabelecimento %></td>
+                    <td><%= user_estabelecimento.user.nome %></td>
+                    <td><%= user_estabelecimento.estabelecimento.nome %></td>
                   </div>
                 </div>
               </td>

@@ -6,4 +6,9 @@ class ApplicationRecord < ActiveRecord::Base
   def self.ransackable_associations(auth_object = nil)
     [ "estabelecimento", "user" ]
   end
+  def self.ransackable_associations(auth_object = nil)
+    reflect_on_all_associations.map do |assoc|
+      assoc.name.to_s
+    end
+  end
 end

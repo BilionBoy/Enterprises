@@ -14,10 +14,10 @@
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
       <div class="row">
         <div class="col-12">
-          <%= f.association :user, input_html: { class: "capitalize"}, placeholder: "User"  %>
+          <%= f.input :user_id, as: :select, collection: User.pluck(:nome, :id), include_blank: "Selecione um usuário", input_html: { class: "form-control capitalize" } %>
         </div>
         <div class="col-12">
-          <%= f.association :estabelecimento, input_html: { class: "capitalize"}, placeholder: "Estabelecimento"  %>
+          <%= f.input :estabelecimento_id, as: :select, collection: Estabelecimento.pluck(:nome, :id), include_blank: "Selecione um estabelecimento", input_html: { class: "form-control capitalize" } %>
         </div>
       </div>
     </div>

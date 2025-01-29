@@ -17,6 +17,9 @@ pt-BR:
       estabelecimento:
         one: "Estabelecimento"
         other: "Estabelecimentos"
+      user_estabelecimento:
+        one: "Usuário Estabelecimento"
+        other: "Usuários Estabelecimentos"
     attributes:
       funcao:
         nome: "Nome"
@@ -26,6 +29,9 @@ pt-BR:
         cnpj: "CNPJ"
         endereco: "Endereço"
         telefone: "Telefone"
+      user_estabelecimento:
+        nome: "Usuário"
+        estabelecimento: "Estabelecimento"
     errors:
       messages:
         record_invalid: "A validação falhou: %{errors}"
