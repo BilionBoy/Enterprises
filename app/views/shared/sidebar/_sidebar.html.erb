@@ -32,13 +32,33 @@
     <div class="sidebar-section">
       <ul class="nav nav-sidebar" data-nav-type="accordion" id="sidebar-items">
         <li class="nav-item"></li>
+          <a href="<%= admin_index_path %>" class="nav-link" id="config-link" data-no-close>
+            <i class="ph-clipboard-text"></i>
+            <span>Home</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="nav nav-sidebar" data-nav-type="accordion" id="sidebar-items">
+        <li class="nav-item"></li>
         <li class="nav-item nav-item-submenu">
           <a href="#" class="nav-link" id="config-link" data-no-close>
-            <i class="ph-book"></i>
+            <i class="ph-clipboard-text"></i>
             <span>Funções</span>
           </a>
           <ul class="nav-group-sub collapse" id="config-collapse">
             <%= render "shared/sidebar/funcao" %>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav nav-sidebar" data-nav-type="accordion" id="sidebar-items">
+        <li class="nav-item"></li>
+        <li class="nav-item nav-item-submenu">
+          <a href="#" class="nav-link" id="config-link" data-no-close>
+            <i class="ph-storefront"></i>
+            <span>Estabelecimentos</span>
+          </a>
+          <ul class="nav-group-sub collapse" id="config-collapse">
+            <%= render "shared/sidebar/estabelecimento" %>
           </ul>
         </li>
       </ul>
