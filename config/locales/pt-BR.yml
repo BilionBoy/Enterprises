@@ -20,6 +20,9 @@ pt-BR:
       user_estabelecimento:
         one: "Usuário Estabelecimento"
         other: "Usuários Estabelecimentos"
+      categoria:
+        one: "Categoria"
+        other: "Categorias"
     attributes:
       funcao:
         nome: "Nome"
@@ -32,6 +35,9 @@ pt-BR:
       user_estabelecimento:
         nome: "Usuário"
         estabelecimento: "Estabelecimento"
+      categoria:
+        nome: "Nome"
+        descricao: "Descrição"
     errors:
       messages:
         record_invalid: "A validação falhou: %{errors}"
