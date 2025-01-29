@@ -28,9 +28,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_29_044905) do
     t.string "cnpj"
     t.text "endereco"
     t.string "telefone"
-    t.string "created_by"
-    t.string "updated_by"
-    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
