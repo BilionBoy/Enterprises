@@ -62,6 +62,18 @@
           </ul>
         </li>
       </ul>
+         <ul class="nav nav-sidebar" data-nav-type="accordion" id="sidebar-items">
+        <li class="nav-item"></li>
+        <li class="nav-item nav-item-submenu">
+          <a href="#" class="nav-link" id="config-link" data-no-close>
+            <i class="ph-line-segments"></i>
+            <span>Categorias</span>
+          </a>
+          <ul class="nav-group-sub collapse" id="config-collapse">
+            <%= render "shared/sidebar/categoria" %>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

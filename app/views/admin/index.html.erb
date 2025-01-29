@@ -1,22 +1,7 @@
-    <style>
-  body {
-      background-color: #f8f9fa;
-  }
-  .card {
-      transition: 0.3s;
-  }
-  .card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  .table-hover tbody tr:hover {
-      background-color: #e9ecef;
-  }
-</style>
 <div class="container mt-4">
-  <h2 class="mb-4">Painel Administrativo</h2>
+  <!-- Cards Section -->
   <div class="row g-4">
-    <div class="col-md-3">
+    <div class="col-md-3 col-sm-6">
       <div class="card text-white bg-primary p-3">
         <div class="card-body">
           <h5 class="card-title">Total de Usuários</h5>
@@ -24,7 +9,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 col-sm-6">
       <div class="card text-white bg-success p-3">
         <div class="card-body">
           <h5 class="card-title">Pedidos do Dia</h5>
@@ -32,7 +17,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 col-sm-6">
       <div class="card text-white bg-warning p-3">
         <div class="card-body">
           <h5 class="card-title">Faturamento</h5>
@@ -40,7 +25,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 col-sm-6">
       <div class="card text-white bg-danger p-3">
         <div class="card-body">
           <h5 class="card-title">Pendências</h5>
@@ -49,8 +34,9 @@
       </div>
     </div>
   </div>
+  <!-- Últimos Pedidos Section -->
   <div class="mt-5">
-    <h4>Últimos Pedidos</h4>
+    <h4 class="mb-4">Últimos Pedidos</h4>
     <table class="table table-striped table-hover">
       <thead>
         <tr>
