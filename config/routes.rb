@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categorias
   devise_for :users, controllers: { registrations: "users/registrations" }  # Aqui você define que o controlador de registro será o seu customizado }
   root "admin#index"
   get "admin/index"
