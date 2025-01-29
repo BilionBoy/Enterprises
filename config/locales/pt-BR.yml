@@ -10,6 +10,14 @@ pt-BR:
     next: "Próxima"
 
   activerecord:
+    models:
+      funcao:
+        one: "Função"
+        other: "Funções"
+    attributes:
+      funcao:
+        nome: "Nome"
+        descricao: "Descrição"
     errors:
       messages:
         record_invalid: "A validação falhou: %{errors}"
