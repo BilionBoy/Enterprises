@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :estabelecimentos
   devise_for :users, controllers: { registrations: "users/registrations" }  # Aqui você define que o controlador de registro será o seu customizado }
   root "admin#index"
   get "admin/index"
@@ -7,6 +6,8 @@ Rails.application.routes.draw do
 
   # Rotas Scaffold
   resources :funcoes
+  resources :estabelecimentos
+  resources :users_estabelecimentos
 
 
   # Can be used by load balancers and uptime monitors to verify that the app is live.
