@@ -18,7 +18,7 @@
       <%- attributes.each do |attribute| -%>
         <% unless attributes_to_ignore.include?(attribute.name) %>
           <div class="col-12">
-            <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %>, input_html: { class: "keyup <%= "select2" if attribute.reference? %>"}  %>
+            <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %>, input_html: { class: "capitalize"}, placeholder: "<%= attribute.name.humanize %>"  %>
           </div>
         <% end %>
       <%- end -%>

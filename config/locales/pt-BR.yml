@@ -14,10 +14,18 @@ pt-BR:
       funcao:
         one: "Função"
         other: "Funções"
+      estabelecimento:
+        one: "Estabelecimento"
+        other: "Estabelecimentos"
     attributes:
       funcao:
         nome: "Nome"
         descricao: "Descrição"
+      estabelecimento:
+        nome: "Nome"
+        cnpj: "CNPJ"
+        endereco: "Endereço"
+        telefone: "Telefone"
     errors:
       messages:
         record_invalid: "A validação falhou: %{errors}"
