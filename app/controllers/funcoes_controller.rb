@@ -1,6 +1,7 @@
 # frozen_string_literal: true
-
 class FuncoesController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :set_funcao, only: %i[show edit update destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found

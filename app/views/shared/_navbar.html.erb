@@ -12,6 +12,18 @@
       </a>
     </div>
   </div>
+  <ul class="nav flex-row justify-content-end order-1 order-lg-2">
+    <li class="nav-item nav-item-dropdown-lg ms-lg-2">
+      <a href="#" class="navbar-nav-link align-items-center rounded-pill p-1" id="userMenuToggle">
+        <div class="status-indicator-container">
+          <i class="ph-user-circle"></i>
+        </div>
+        <span class="d-none d-xl-inline-block mx-lg-2">  <%= current_user&.nome || 'Convidado' %> </span>    </a>
+      <div id="userMenu" class="custom-dropdown-menu">
+        <%= button_to '<i class="ph-sign-out me-2"></i>Sair'.html_safe, destroy_user_session_path, method: :delete, class: "btn btn-logout" %>
+      </div>
+    </li>
+  </ul>
 </div>
 <style>
   .custom-dropdown-menu {
