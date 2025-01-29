@@ -6,7 +6,7 @@ class EstabelecimentosController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
 
   def index
-    @q = Estabelecimento.ransack(params[:q])
+    @q = current_user.estabelecimentos.ransack(params[:q])
     @pagy, @estabelecimentos = pagy(@q.result)
   end
 
@@ -21,11 +21,15 @@ class EstabelecimentosController < ApplicationController
     @estabelecimento = Estabelecimento.new(estabelecimento_params)
 
     if @estabelecimento.save
+      # Associa o usuário atual ao estabelecimento criado
+      UsersEstabelecimento.create(user: current_user, estabelecimento: @estabelecimento)
+
       redirect_to estabelecimentos_path, notice: t("messages.created_successfully")
     else
       render :new, status: :unprocessable_entity
     end
   end
+
 
   def update
     if @estabelecimento.update(estabelecimento_params)
