@@ -54,11 +54,12 @@ class ProdutosController < ApplicationController
     @produto = Produto.find_by(id: params[:id])
     redirect_to produtos_path, alert: t("messages.not_found") unless @produto
   end
-
   def produto_params
     permitted_attributes = Produto.column_names.reject { |col| [ "deleted_at", "created_by", "updated_by" ].include?(col) }
+    permitted_attributes << "categoria_id" unless permitted_attributes.include?("categoria_id") # Garante que categoria_id seja permitido
     params.require(:produto).permit(permitted_attributes.map(&:to_sym))
   end
+
 
   def handle_not_found
     redirect_to produtos_path, alert: t("messages.not_found")

@@ -13,23 +13,26 @@
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
       <div class="row">
-        <div class="col-12">
+        <div class="col-12 col-md-6">
           <%= f.input :nome, input_html: { class: "capitalize"}, placeholder: "Nome"  %>
         </div>
-        <div class="col-12">
-          <%= f.input :preco, input_html: { class: "capitalize"}, placeholder: "Preco"  %>
+        <div class="col-12 col-md-6">
+          <%= f.input :categoria_id, as: :select, collection: current_user.estabelecimentos.flat_map(&:categorias), label_method: :nome, value_method: :id, prompt: "Selecione uma categoria" %>
         </div>
-        <div class="col-12">
+        <div class="col-12 col-md-6">
           <%= f.input :quantidade_estoque, input_html: { class: "capitalize"}, placeholder: "Quantidade estoque"  %>
         </div>
-        <div class="col-12">
+        <div class="col-12 col-md-6">
+          <%= f.input :preco, input_html: { class: "capitalize"}, placeholder: "Preco"  %>
+        </div>
+        <div class="col-12 ">
           <%= f.input :descricao, input_html: { class: "capitalize"}, placeholder: "Descricao"  %>
         </div>
         <div class="col-12">
           <%= f.input :ingredientes, input_html: { class: "capitalize"}, placeholder: "Ingredientes"  %>
         </div>
         <div class="col-12">
-          <%= f.input :categoria, as: :select, collection: current_user.estabelecimentos.flat_map(&:categorias), label_method: :nome, value_method: :id, prompt: "Selecione uma categoria", input_html: { class: "form-control capitalize", title: "Escolha a categoria associada ao seu estabelecimento" } %>
+          <%= f.input :image, as: :file, label: "Imagem do Produto" %>
         </div>
       </div>
     </div>

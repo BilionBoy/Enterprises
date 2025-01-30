@@ -92,3 +92,6 @@ gem "cancancan"
 
 # Soft deleted_at
 gem "paranoia"
+
+# Imagens
+gem "image_processing", ">= 1.2"
