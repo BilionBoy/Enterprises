@@ -29,7 +29,7 @@
           <%= f.input :ingredientes, input_html: { class: "capitalize"}, placeholder: "Ingredientes"  %>
         </div>
         <div class="col-12">
-          <%= f.association :categoria, input_html: { class: "capitalize"}, placeholder: "Categoria"  %>
+          <%= f.input :categoria, as: :select, collection: current_user.estabelecimentos.flat_map(&:categorias), label_method: :nome, value_method: :id, prompt: "Selecione uma categoria", input_html: { class: "form-control capitalize", title: "Escolha a categoria associada ao seu estabelecimento" } %>
         </div>
       </div>
     </div>
