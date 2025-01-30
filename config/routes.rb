@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   resources :funcoes
   resources :estabelecimentos
   resources :users_estabelecimentos
-  resources :produtos
+  resources :produtos do
+    collection do
+      get :cards, path: "cards", as: :cards
+    end
+  end
+
   resources :categorias
 
 
